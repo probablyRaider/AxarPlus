@@ -36,6 +36,9 @@ body.loaded {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* respect iOS safe area so content truly centers on devices with notches */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
   background: #000000;
   transition: opacity 0.6s ease, visibility 0.6s ease;
 }
@@ -53,6 +56,46 @@ body.loaded .splash-screen {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+/* Make header content respect the iPhone safe-area and stay visually centered */
+.hero-top {
+  padding-top: calc(0.55rem + env(safe-area-inset-top));
+  padding-bottom: calc(0.2rem + env(safe-area-inset-bottom));
+}
+
+/* Center footer text across all pages that use .footer or .page-footer */
+.footer,
+.page-footer {
+  color: rgba(248, 248, 248, 0.72);
+  padding: 1rem 0 2rem;
+  text-align: center;
+}
+
+/* ensure existing .footer-content keeps its max width but text centered */
+.footer-content {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* Small-screen tweaks for iPhone widths to avoid tiny translate offsets */
+@media (max-width: 420px) {
+  .brand-stack {
+    transform: none;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .brand-logo {
+    width: min(240px, 60vw);
+  }
+
+  .splash-screen img {
+    width: min(220px, 56vw);
+  }
 }
 
 @keyframes splashPulse {

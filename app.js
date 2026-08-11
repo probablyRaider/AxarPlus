@@ -991,7 +991,7 @@ window.addEventListener('DOMContentLoaded', () => {
       markSplashSeen();
       setTimeout(() => {
         document.body.classList.add('loaded');
-      }, 5000);
+      }, 3000);
     } else {
       document.body.classList.add('loaded');
     }
