@@ -417,7 +417,7 @@ const translations = {
     pageTitle: "Axar+ | Planifica tu viaje",
     brandLabel: "Axar+",
     heroTitle: "Axar+ · Planifica tus viajes con claridad",
-    heroSubtitle: "Busca horarios actualizados y planifica tu recorrido con una experiencia rápida y clara.",
+    heroSubtitle: "Busca horarios actualizados y planifica tu viaje con una <strong>web clara</strong>, <strong>rápida</strong> y <strong>fácil</strong>.",
     navHome: "Inicio",
     navGallery: "Galería",
     navInfo: "Información",
@@ -471,7 +471,7 @@ const translations = {
     pageTitle: "Axar+ | Plan your journey",
     brandLabel: "Axar+",
     heroTitle: "Axar+ · Plan your journeys with clarity",
-    heroSubtitle: "Search updated schedules and plan your route with a fast, clear experience.",
+    heroSubtitle: "Search updated schedules and plan your route with a <strong>clear</strong>, <strong>fast</strong> and <strong>easy</strong> web experience.",
     navHome: "Home",
     navGallery: "Gallery",
     navInfo: "Info",
@@ -525,7 +525,7 @@ const translations = {
     pageTitle: "Axar+ | Planeia a tua viagem",
     brandLabel: "Axar+",
     heroTitle: "Axar+ · Planeia as tuas viagens com clareza",
-    heroSubtitle: "Procura horários atualizados e planeia o teu percurso com uma experiência rápida e clara.",
+    heroSubtitle: "Procura horários atualizados e planeia o teu percurso com uma experiência de <strong>web clara</strong>, <strong>rápida</strong> e <strong>fácil</strong>.",
     navHome: "Início",
     navGallery: "Galeria",
     navInfo: "Informação",
@@ -579,7 +579,7 @@ const translations = {
     pageTitle: "Axar+ | Planifica el teu viatge",
     brandLabel: "Axar+",
     heroTitle: "Axar+ · Planifica els teus viatges amb claredat",
-    heroSubtitle: "Cerca horaris actualitzats i planifica el teu recorregut amb una experiència ràpida i clara.",
+    heroSubtitle: "Cerca horaris actualitzats i planifica el teu recorregut amb una <strong>web clara</strong>, <strong>ràpida</strong> i <strong>fàcil</strong>.",
     navHome: "Inici",
     navGallery: "Galeria",
     navInfo: "Informació",
@@ -633,7 +633,7 @@ const translations = {
     pageTitle: "Axar+ | Planifiez votre voyage",
     brandLabel: "Axar+",
     heroTitle: "Axar+ · Planifiez vos trajets avec clarté",
-    heroSubtitle: "Recherchez des horaires à jour et planifiez votre parcours avec une expérience rapide et claire.",
+    heroSubtitle: "Recherchez des horaires à jour et planifiez votre parcours avec une expérience <strong>claire</strong>, <strong>rapide</strong> et <strong>simple</strong>.",
     navHome: "Accueil",
     navGallery: "Galerie",
     navInfo: "Infos",
@@ -727,7 +727,8 @@ function applyTranslations() {
   document.querySelectorAll('[data-i18n]').forEach(node => {
     const key = node.getAttribute('data-i18n');
     if (key && t(key) !== null) {
-      if (key === 'footerCredit') {
+      // footerCredit and heroSubtitle contain HTML markup (<a>, <strong>) so set innerHTML for them
+      if (key === 'footerCredit' || key === 'heroSubtitle') {
         node.innerHTML = t(key);
       } else {
         node.textContent = t(key);
@@ -986,15 +987,14 @@ window.addEventListener('DOMContentLoaded', () => {
   window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
 
   const splashScreen = document.getElementById('splash-screen');
+  const SPLASH_DURATION_MS = 2500; // show splash for 2.5 seconds on each page load
   if (splashScreen) {
-    if (shouldShowSplash()) {
-      markSplashSeen();
-      setTimeout(() => {
-        document.body.classList.add('loaded');
-      }, 3000);
-    } else {
+    // ensure loading state visible until timeout
+    document.body.classList.add('loading');
+    setTimeout(() => {
       document.body.classList.add('loaded');
-    }
+      document.body.classList.remove('loading');
+    }, SPLASH_DURATION_MS);
   } else {
     document.body.classList.add('loaded');
   }
