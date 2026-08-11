@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Axar+" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="manifest" href="manifest.json" />
+  <title>Axar+ | Planifica tu viaje</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="loading">
+  <div id="splash-screen" class="splash-screen" aria-live="polite" aria-label="Cargando Axar+">
+    <img src="./logo2.png" alt="Axar+ logo" />
+  </div>
+
+  <header class="hero">
+    <div class="hero-top">
+      <div class="brand-mark">
+        <div class="brand-stack">
+          <img class="brand-logo" src="./logo2.png" alt="Axar+ logo" loading="eager" />
+          <p class="brand-slogan">Busca horarios actualizados y planifica tu viaje con una <strong>web clara</strong>, <strong>rápida</strong> y <strong>fácil</strong>.</p>
+        </div>
+      </div>
+
+      <div class="hero-controls">
+        <div class="language-picker">
+          <button id="langToggle" class="lang-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu" data-i18n="languageLabel">🌍 ES</button>
+          <div class="language-menu" id="langMenu" aria-label="Idioma" hidden>
+            <button type="button" class="lang-btn active" data-lang="es">🇪🇸 Español</button>
+            <button type="button" class="lang-btn" data-lang="en">🇬🇧 English</button>
+            <button type="button" class="lang-btn" data-lang="pt">🇵🇹 Português</button>
+            <button type="button" class="lang-btn" data-lang="ca">🇪🇸 Català</button>
+            <button type="button" class="lang-btn" data-lang="fr">🇫🇷 Français</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-links">
+      <a href="gallery.html" data-i18n="navGallery">Galería</a>
+      <a href="index.html" data-i18n="navInfo">Información</a>
+      <a href="faq.html" data-i18n="navFaq">FAQ</a>
+      <a href="contact.html" data-i18n="navContact">Contacto</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="search-card" aria-labelledby="search-title">
+      <div class="section-title">
+        <h2 id="search-title" data-i18n="searchTitle">Encuentra tu viaje</h2>
+        <p data-i18n="searchDescription">Selecciona el origen y el destino para ver los horarios disponibles en ambas direcciones.</p>
+      </div>
+
+      <div class="form-grid">
+        <label class="form-row" for="origin">
+          <span data-i18n="originLabel">Origen</span>
+          <select id="origin" aria-label="Origen"></select>
+        </label>
+
+        <label class="form-row" for="destination">
+          <span data-i18n="destinationLabel">Destino</span>
+          <select id="destination" aria-label="Destino"></select>
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button id="searchButton" type="button" class="primary" data-i18n="searchButton">Buscar horarios</button>
+        <button id="resetButton" type="button" class="secondary" data-i18n="resetButton">Reiniciar</button>
+      </div>
+    </section>
+
+    <section class="results-card" aria-live="polite" aria-atomic="true">
+      <div id="status" class="status-message">Selecciona origen y destino para ver los horarios.</div>
+      <div id="results"></div>
+    </section>
+
+  </main>
+
+  <footer class="page-footer" aria-label="Créditos">
+    <div class="container footer-content">
+      <p data-i18n="footerCredit">Axar+ creado por <a href="https://github.com/probablyraider" target="_blank" rel="noopener noreferrer">@probablyraider</a> en <a href="https://github.com/probablyraider" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

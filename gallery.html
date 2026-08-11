@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Axar+" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="manifest" href="manifest.json" />
+  <title>Axar+ | Galería</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-top">
+      <div class="brand-mark">
+        <div class="brand-stack">
+          <a href="index.html" aria-label="Ir a la portada">
+            <img class="brand-logo" src="./logo2.png" alt="Axar+ logo" loading="eager" />
+          </a>
+          <p class="brand-slogan">Busca horarios actualizados y planifica tu viaje con una <strong>web clara</strong>, <strong>rápida</strong> y <strong>fácil</strong>.</p>
+        </div>
+      </div>
+
+      <div class="hero-controls">
+        <div class="language-picker">
+          <button id="langToggle" class="lang-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu" data-i18n="languageLabel">🌍 ES</button>
+          <div class="language-menu" id="langMenu" aria-label="Idioma" hidden>
+            <button type="button" class="lang-btn active" data-lang="es">🇪🇸 Español</button>
+            <button type="button" class="lang-btn" data-lang="en">🇬🇧 English</button>
+            <button type="button" class="lang-btn" data-lang="pt">🇵🇹 Português</button>
+            <button type="button" class="lang-btn" data-lang="ca">🇪🇸 Català</button>
+            <button type="button" class="lang-btn" data-lang="fr">🇫🇷 Français</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-links">
+      <a href="index.html" data-i18n="navHome">Inicio</a>
+      <a href="gallery.html" data-i18n="navGallery">Galería</a>
+      <a href="faq.html" data-i18n="navFaq">FAQ</a>
+      <a href="contact.html" data-i18n="navContact">Contacto</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="gallery-card" id="gallery" aria-labelledby="gallery-title">
+      <div class="section-title">
+        <h2 id="gallery-title" data-i18n="galleryTitle">Galería de destinos</h2>
+        <p data-i18n="galleryDescription">Conoce algunos de los lugares más bonitos que puedes visitar con la línea.</p>
+      </div>
+      <div class="gallery-grid">
+        <article class="gallery-item">
+          <div class="gallery-figure gallery-figure-malaga"></div>
+          <h3 data-i18n="galleryCard1Title">Málaga</h3>
+          <p data-i18n="galleryCard1Text">Comienza en la estación de autobuses y disfruta de la ciudad antes de salir hacia el valle.</p>
+        </article>
+        <article class="gallery-item">
+          <div class="gallery-figure gallery-figure-colmenar"></div>
+          <h3 data-i18n="galleryCard2Title">Pueblos de la ruta</h3>
+          <p data-i18n="galleryCard2Text">Descubre paradas, miradores y pueblos con encanto a lo largo del recorrido.</p>
+        </article>
+        <article class="gallery-item">
+          <div class="gallery-figure gallery-figure-casabermeja"></div>
+          <h3 data-i18n="galleryCard3Title">Casabermeja</h3>
+          <p data-i18n="galleryCard3Text">Escapa del bullicio y conoce su centro tradicional, ideal para una excursión de medio día.</p>
+        </article>
+        <article class="gallery-item">
+          <div class="gallery-figure gallery-figure-riogordo"></div>
+          <h3 data-i18n="galleryCard4Title">Riogordo</h3>
+          <p data-i18n="galleryCard4Text">Descubre uno de los últimos pueblos de la ruta antes de volver a Málaga.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p data-i18n="footerCredit">Axar+ creado por <a href="https://github.com/probablyraider">@probablyraider</a> y <a href="https://github.com/probablyraider">GitHub</a>.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
