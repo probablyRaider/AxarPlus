@@ -357,25 +357,34 @@ const aliasStopNames = {
 
 const frequencyLabels = {
   es: {
-    "L-V": "Lunes a viernes",
-    sdf: "Sábados, domingos y festivos"
+    "L-V": "Lunes # ➜ Viernes",
+    sdf: "Sabado, domingo y festivos"
   },
   en: {
-    "L-V": "Mon-Fri",
-    sdf: "Sat-Sun & holidays"
+    "L-V": "Mon # ➜ Fri",
+    sdf: "Saturday, Sunday & holidays"
   },
   pt: {
-    "L-V": "Seg-sex",
-    sdf: "Sáb-Dom e feriados"
+    "L-V": "Seg # ➜ Sex",
+    sdf: "Sábado, domingo e feriados"
   },
   ca: {
-    "L-V": "Dll-Dv",
-    sdf: "Diss-Dg i festius"
+    "L-V": "Dll # ➜ Dv",
+    sdf: "Dissabte, diumenge i festius"
   },
   fr: {
-    "L-V": "Lun-Ven",
-    sdf: "Sam-Dim et fêtes"
+    "L-V": "Lun # ➜ Ven",
+    sdf: "Samedi, dimanche et fêtes"
   }
+};
+
+// Localized placeholder labels for the origin/destination selects
+const selectPlaceholderLabels = {
+  es: 'Selecciona...',
+  en: 'Select...',
+  pt: 'Seleciona...',
+  ca: 'Selecciona...',
+  fr: 'Sélectionner...'
 };
 
 const noteTranslations = {
@@ -833,7 +842,7 @@ function getJourneyList(origin, destination) {
     const startIndex = section.stops.indexOf(normalizedOrigin);
     const endIndex = section.stops.indexOf(normalizedDestination);
 
-    if (startIndex >= 0 && endIndex >= 0 && startIndex < endIndex) {
+    if (startIndex >= 0 && endIndex >= 0 && startIndex !== endIndex) {
       section.journeys.forEach(journey => {
         const departure = journey.stops[normalizedOrigin];
         const arrival = journey.stops[normalizedDestination];
@@ -960,6 +969,17 @@ function populateStops() {
   origin.innerHTML = '';
   destination.innerHTML = '';
 
+  // Insert a blank placeholder so users must choose origin/destination explicitly
+  const placeholderText = selectPlaceholderLabels[currentLanguage] || 'Select...';
+  const placeholder = document.createElement('option');
+  placeholder.value = '';
+  placeholder.textContent = placeholderText;
+  placeholder.disabled = true;
+  placeholder.selected = true;
+
+  origin.appendChild(placeholder.cloneNode(true));
+  destination.appendChild(placeholder.cloneNode(true));
+
   stops.forEach(stop => {
     const option = document.createElement('option');
     option.value = stop;
@@ -968,8 +988,8 @@ function populateStops() {
     destination.appendChild(option.cloneNode(true));
   });
 
-  origin.selectedIndex = 0;
-  destination.selectedIndex = Math.min(1, stops.length - 1);
+  // Do not pre-select any real stop; user must pick both origin and destination
+}
 }
 
 function handleSearch() {
@@ -1111,7 +1131,9 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  if (document.getElementById('origin') && document.getElementById('destination')) {
+  const originInit = document.getElementById('origin');
+  const destinationInit = document.getElementById('destination');
+  if (originInit && destinationInit && originInit.value && destinationInit.value) {
     handleSearch();
   }
 });
