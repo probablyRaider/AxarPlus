@@ -987,10 +987,12 @@ window.addEventListener('DOMContentLoaded', () => {
   window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
 
   const splashScreen = document.getElementById('splash-screen');
-  const SPLASH_DURATION_MS = 2500; // show splash for 2.5 seconds on each page load
+  const SPLASH_DURATION_MS = 2000; // show splash for 2 seconds on each page load
   if (splashScreen) {
     // ensure loading state visible until timeout
     document.body.classList.add('loading');
+    // always remove any previous loaded state
+    document.body.classList.remove('loaded');
     setTimeout(() => {
       document.body.classList.add('loaded');
       document.body.classList.remove('loading');
@@ -998,6 +1000,21 @@ window.addEventListener('DOMContentLoaded', () => {
   } else {
     document.body.classList.add('loaded');
   }
+
+  // Ensure splash shows when page is restored from bfcache (back/forward cache)
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) {
+      const s = document.getElementById('splash-screen');
+      if (s) {
+        document.body.classList.add('loading');
+        document.body.classList.remove('loaded');
+        setTimeout(() => {
+          document.body.classList.add('loaded');
+          document.body.classList.remove('loading');
+        }, SPLASH_DURATION_MS);
+      }
+    }
+  });
 
   loadSavedLanguage();
   populateStops();

@@ -100,18 +100,25 @@ body.loaded .splash-screen {
 /* Small-screen tweaks for iPhone widths to avoid tiny translate offsets */
 @media (max-width: 420px) {
   .brand-stack {
-    transform: none;
-    width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 2rem);
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 
   .brand-logo {
-    width: min(240px, 60vw);
+    width: clamp(120px, 46vw, 240px);
   }
 
   .splash-screen img {
-    width: min(220px, 56vw);
+    width: clamp(140px, 48vw, 220px);
+  }
+
+  /* ensure hero-controls don't push layout on small screens */
+  .hero-controls {
+    right: 0.5rem;
+    top: calc(0.6rem + env(safe-area-inset-top));
   }
 }
 
@@ -169,12 +176,15 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 0.12rem;
-  width: min(860px, 100%);
-  /* remove fixed translate-based offsets to avoid misalignment on small devices */
-  transform: none;
+  /* make container fluid but constrained and strictly centered */
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 860px;
   margin: 0 auto;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .brand-logo {
