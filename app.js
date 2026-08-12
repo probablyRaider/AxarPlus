@@ -797,6 +797,24 @@ function toggleLanguageMenu() {
   toggle.setAttribute('aria-expanded', String(open));
 }
 
+function updateSelectPlaceholders() {
+  const originSelect = document.getElementById('origin');
+  const destinationSelect = document.getElementById('destination');
+  const placeholderText = selectPlaceholderLabels[currentLanguage] || 'Select...';
+  if (originSelect && originSelect.options && originSelect.options.length) {
+    const opt = originSelect.options[0];
+    if (opt && opt.value === '') {
+      opt.textContent = placeholderText;
+    }
+  }
+  if (destinationSelect && destinationSelect.options && destinationSelect.options.length) {
+    const opt2 = destinationSelect.options[0];
+    if (opt2 && opt2.value === '') {
+      opt2.textContent = placeholderText;
+    }
+  }
+}
+
 function updateLanguage(lang) {
   currentLanguage = lang;
   try {
@@ -806,6 +824,8 @@ function updateLanguage(lang) {
   }
   setLanguageButtons();
   applyTranslations();
+  // Update placeholder text without wiping user selections
+  updateSelectPlaceholders();
   if (typeof handleSearch === 'function') {
     handleSearch();
   }
@@ -990,7 +1010,6 @@ function populateStops() {
 
   // Do not pre-select any real stop; user must pick both origin and destination
 }
-}
 
 function handleSearch() {
   const originEl = document.getElementById('origin');
@@ -1020,15 +1039,43 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const splashScreen = document.getElementById('splash-screen');
   const SPLASH_DURATION_MS = 2000; // show splash for 2 seconds on each page load
-  if (splashScreen) {
-    // ensure loading state visible until timeout
-    document.body.classList.add('loading');
-    // always remove any previous loaded state
+
+  // Use a global timeout id so multiple events don't create overlapping timers
+  if (!window.__splashTimeoutId) window.__splashTimeoutId = null;
+
+  function showSplashOnce() {
+    if (!splashScreen) return;
+    // If already showing, clear previous timeout to avoid loops
+    if (window.__splashTimeoutId) {
+      clearTimeout(window.__splashTimeoutId);
+      window.__splashTimeoutId = null;
+    }
+
+    // Only add loading if not already present
+    if (!document.body.classList.contains('loading')) {
+      document.body.classList.add('loading');
+    }
+    // ensure 'loaded' removed so CSS transitions run
     document.body.classList.remove('loaded');
-    setTimeout(() => {
+
+    window.__splashTimeoutId = setTimeout(() => {
       document.body.classList.add('loaded');
       document.body.classList.remove('loading');
+      // hide the element after transition (avoid reflow loops)
+      if (splashScreen) {
+        splashScreen.style.visibility = 'hidden';
+        splashScreen.style.opacity = '0';
+        // also remove from flow after a short delay
+        setTimeout(() => {
+          if (splashScreen && splashScreen.parentNode) splashScreen.style.display = 'none';
+        }, 650);
+      }
+      window.__splashTimeoutId = null;
     }, SPLASH_DURATION_MS);
+  }
+
+  if (splashScreen) {
+    showSplashOnce();
   } else {
     document.body.classList.add('loaded');
   }
@@ -1037,13 +1084,13 @@ window.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('pageshow', (e) => {
     if (e.persisted) {
       const s = document.getElementById('splash-screen');
-      if (s) {
-        document.body.classList.add('loading');
-        document.body.classList.remove('loaded');
-        setTimeout(() => {
-          document.body.classList.add('loaded');
-          document.body.classList.remove('loading');
-        }, SPLASH_DURATION_MS);
+      // show only if not already visible
+      if (s && !document.body.classList.contains('loading') && !document.body.classList.contains('loaded')) {
+        // bring back visible state then hide again after timeout
+        s.style.display = '';
+        s.style.visibility = '';
+        s.style.opacity = '';
+        showSplashOnce();
       }
     }
   });
