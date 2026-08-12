@@ -1,4 +1,4 @@
-# 😼 Axar+ | Moderniza tus viajes
+# 😼 Axar+ | Tu itinerario moderno
 
 **Axar+** es una plataforma aún en desarrollo en base a la idea de hacer una página que funcione... No como la página del Consorcio de Transportes de Andalucía. De momento, solo conecta la línea M-251.
 
