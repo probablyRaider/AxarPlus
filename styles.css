@@ -112,11 +112,13 @@ body.loaded .splash-screen {
 /* Small-screen tweaks for iPhone widths to avoid tiny translate offsets */
 @media (max-width: 420px) {
   .brand-stack {
-    left: 50%;
-    transform: translateX(-50%);
+    /* center with margin auto to avoid transform overflow issues */
     width: calc(100% - 2rem);
+    max-width: 860px;
+    margin: 0 auto;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
+    transform: none;
   }
 
   .brand-logo {
@@ -137,6 +139,18 @@ body.loaded .splash-screen {
 /* Mobile-only corrective rules requested by user (max-width: 768px) */
 @media (max-width: 768px) {
   /* Adjust core layout elements to prevent horizontal overflow on mobile */
+  html, body {
+    overflow-x: hidden !important;
+    touch-action: pan-y !important; /* prefer vertical panning only */
+  }
+
+  /* Ensure main structural containers cannot overflow horizontally */
+  body, main, .container, header, nav, section, footer {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
   .navbar, .container, header, nav, main, section, footer {
     width: 100% !important;
     max-width: 100% !important;
@@ -221,16 +235,14 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 0.12rem;
-  /* make container fluid but constrained and strictly centered */
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  /* make container fluid but constrained and centered via margin (safe for desktop and mobile) */
   width: calc(100% - 2rem);
   max-width: 860px;
   margin: 0 auto;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
+
 
 .brand-logo {
   display: block;

@@ -1,7 +1,7 @@
 {
-  "name": "Axal+",
-  "short_name": "Axal+",
-  "description": "Planifica tu viaje y consulta horarios de autobuses con Axal+.",
+  "name": "Axar+",
+  "short_name": "Axar+",
+  "description": "Planifica tu viaje y consulta horarios de autobuses con Axar+.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
