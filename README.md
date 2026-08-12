@@ -5,7 +5,6 @@
 > **Nota:** Este proyecto **no es un sitio web oficial** de ninguna entidad pública. Está hecho 100% por amor al arte y por ganas de ofrecer una mejor experiencia a los usuarios de la comarca.
 
 🌐 **Sitio Web:** [Axar+](https://probablyraider.github.io/AxarPlus/)  
-📁 **Repositorio:** [github.com/probablyRaider/AxarPlus](https://github.com/probablyRaider/AxarPlus)
 
 ## 📱 Cómo instalar en iOS (iPhone)
 
