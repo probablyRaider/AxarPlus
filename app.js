@@ -893,9 +893,11 @@ function renderResults(origin, destination, journeys) {
   }));
 
   const table = document.createElement('table');
+  table.className = 'responsive-table';
   const thead = document.createElement('thead');
   const headerRow = document.createElement('tr');
-  [t('tableDeparture'), t('tableArrival'), t('tableDays'), t('tableNotes')].forEach(text => {
+  const headers = [t('tableDeparture'), t('tableArrival'), t('tableDays'), t('tableNotes')];
+  headers.forEach(text => {
     const th = document.createElement('th');
     th.textContent = text;
     headerRow.appendChild(th);
@@ -910,17 +912,22 @@ function renderResults(origin, destination, journeys) {
 
     const departureCell = document.createElement('td');
     departureCell.textContent = journey.departure;
+    departureCell.setAttribute('data-label', t('tableDeparture'));
     row.appendChild(departureCell);
 
     const arrivalCell = document.createElement('td');
     arrivalCell.textContent = journey.arrival;
+    arrivalCell.setAttribute('data-label', t('tableArrival'));
     row.appendChild(arrivalCell);
 
     const freqCell = document.createElement('td');
     freqCell.textContent = journey.frequency;
+    freqCell.setAttribute('data-label', t('tableDays'));
     row.appendChild(freqCell);
 
     const noteCell = document.createElement('td');
+    noteCell.className = 'note-cell';
+    noteCell.setAttribute('data-label', t('tableNotes'));
     if (journey.note) {
       const notePill = document.createElement('span');
       notePill.className = 'note-pill';
@@ -936,7 +943,12 @@ function renderResults(origin, destination, journeys) {
   });
 
   table.appendChild(tbody);
-  results.appendChild(table);
+
+  // Wrap table in a horizontally-scrollable container (fallback for narrow screens)
+  const scrollWrap = document.createElement('div');
+  scrollWrap.className = 'table-scroll';
+  scrollWrap.appendChild(table);
+  results.appendChild(scrollWrap);
 }
 
 function populateStops() {
@@ -1023,6 +1035,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const searchButton = document.getElementById('searchButton');
   const resetButton = document.getElementById('resetButton');
+  const swapButton = document.getElementById('swapButton');
   const origin = document.getElementById('origin');
   const destination = document.getElementById('destination');
   const langToggle = document.getElementById('langToggle');
@@ -1033,6 +1046,36 @@ window.addEventListener('DOMContentLoaded', () => {
   if (resetButton) {
     resetButton.addEventListener('click', handleReset);
   }
+
+  // Swap origin and destination values when swapButton is clicked
+  if (swapButton) {
+    swapButton.addEventListener('click', () => {
+      const originEl = document.getElementById('origin');
+      const destinationEl = document.getElementById('destination');
+      if (!originEl || !destinationEl) return;
+
+      // Attempt to swap by selectedIndex first (works when both selects share same options)
+      try {
+        const oIndex = originEl.selectedIndex;
+        const dIndex = destinationEl.selectedIndex;
+        originEl.selectedIndex = Math.min(dIndex, originEl.options.length - 1);
+        destinationEl.selectedIndex = Math.min(oIndex, destinationEl.options.length - 1);
+      } catch (e) {
+        // Fallback: swap by value
+        const oValue = originEl.value;
+        originEl.value = destinationEl.value || oValue;
+        destinationEl.value = oValue;
+      }
+
+      // Trigger change handlers and update results
+      originEl.dispatchEvent(new Event('change', { bubbles: true }));
+      destinationEl.dispatchEvent(new Event('change', { bubbles: true }));
+      if (typeof handleSearch === 'function') {
+        handleSearch();
+      }
+    });
+  }
+
   if (origin) {
     origin.addEventListener('change', handleSearch);
   }

@@ -504,6 +504,23 @@ button.secondary {
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
+/* Swap button: compact visual style, reuses secondary design */
+button#swapButton {
+  padding: 0.6rem 0.85rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+}
+
+/* Ensure swap button does not introduce layout overflow on small screens */
+@media (max-width: 420px) {
+  button#swapButton { padding: 0.5rem 0.6rem; min-width: 40px; }
+}
+
 .form-actions {
   display: flex;
   justify-content: center;
@@ -569,6 +586,72 @@ button.secondary {
   border-radius: 999px;
   padding: 0.45rem 0.9rem;
   font-size: 0.95rem;
+}
+
+/* Table responsiveness and mobile card transform */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+}
+
+/* Keep observation column readable on most widths */
+.results-card td.note-cell {
+  min-width: 180px;
+}
+
+/* Mobile: convert table rows to card-like blocks for better readability */
+@media (max-width: 600px) {
+  .results-card .table-scroll { padding-bottom: 0; }
+  .results-card table.responsive-table,
+  .results-card thead,
+  .results-card tbody,
+  .results-card th,
+  .results-card td,
+  .results-card tr {
+    display: block;
+    width: 100%;
+  }
+
+  .results-card thead { display: none; }
+
+  .results-card tr {
+    margin-bottom: 0.85rem;
+    background: #0f1113;
+    border-radius: 12px;
+    padding: 0.75rem;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .results-card td {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.45rem 0.25rem;
+    border-bottom: none;
+    gap: 0.6rem;
+  }
+
+  .results-card td::before {
+    content: attr(data-label);
+    color: rgba(248,248,248,0.72);
+    font-weight: 700;
+    flex: 0 0 auto;
+    margin-right: 0.75rem;
+    width: 40%;
+    max-width: 40%;
+    text-align: left;
+  }
+
+  .results-card td > .note-pill {
+    max-width: 60%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .results-card td.note-cell::before { width: 40%; }
 }
 
 .gallery-grid {
