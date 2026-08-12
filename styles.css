@@ -529,6 +529,47 @@ button#swapButton {
   margin-top: 1.5rem;
 }
 
+.form-actions button {
+  min-width: 7.5rem;
+}
+
+.form-actions #swapButton {
+  min-width: 3rem;
+}
+
+.day-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.day-filter legend {
+  width: 100%;
+  margin-bottom: 0.25rem;
+  color: #f8fafc;
+  font-weight: 700;
+  text-align: center;
+}
+
+.day-filter-button {
+  min-width: 5rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: transparent;
+  color: #f8fafc;
+}
+
+.day-filter-button.active,
+.day-filter-button[aria-pressed="true"] {
+  background: #f8fafc;
+  color: #111218;
+}
+
 .status-message {
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.08);
@@ -705,6 +746,40 @@ button#swapButton {
   margin: 1rem 0 0;
   padding-left: 1.3rem;
   color: rgba(248, 248, 248, 0.78);
+}
+
+.info-page {
+  gap: 1rem;
+}
+
+.info-topic h3,
+.info-topic h4 {
+  margin: 0;
+  color: #ffffff;
+}
+
+.info-topic h4 {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+}
+
+.info-topic p {
+  margin: 0.75rem 0 0;
+  color: rgba(248, 248, 248, 0.78);
+  line-height: 1.75;
+}
+
+.official-links {
+  margin-top: 1rem !important;
+}
+
+.official-links a {
+  text-decoration: underline;
+}
+
+.placeholder-text {
+  color: rgba(248, 248, 248, 0.68);
+  font-style: italic;
 }
 
 .info-card li,

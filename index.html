@@ -44,7 +44,7 @@
 
     <div class="hero-links">
       <a href="gallery.html" data-i18n="navGallery">Galería</a>
-      <a href="index.html" data-i18n="navInfo">Información</a>
+      <a href="Informacion.html" data-i18n="navInfo">Información</a>
       <a href="faq.html" data-i18n="navFaq">FAQ</a>
       <a href="contact.html" data-i18n="navContact">Contacto</a>
     </div>
@@ -70,10 +70,17 @@
       </div>
 
       <div class="form-actions">
-        <button id="searchButton" type="button" class="primary" data-i18n="searchButton">Buscar horarios</button>
-        <button id="swapButton" type="button" class="secondary" aria-label="Intercambiar origen y destino">↔</button>
+        <button id="searchButton" type="button" class="primary" data-i18n="searchButton">Buscar</button>
+        <button id="swapButton" type="button" class="secondary" aria-label="Intercambiar origen y destino">⇆</button>
         <button id="resetButton" type="button" class="secondary" data-i18n="resetButton">Reiniciar</button>
       </div>
+
+      <fieldset class="day-filter" aria-label="Filtro de día de servicio">
+        <legend data-i18n="dayFilterLabel">Día de servicio</legend>
+        <button type="button" class="day-filter-button active" data-day-filter="all" aria-pressed="true">Todos</button>
+        <button type="button" class="day-filter-button" data-day-filter="L-V" aria-pressed="false">L-V</button>
+        <button type="button" class="day-filter-button" data-day-filter="SDF" aria-pressed="false">SDF</button>
+      </fieldset>
     </section>
 
     <section class="results-card" aria-live="polite" aria-atomic="true">
@@ -92,3 +99,4 @@
   <script src="app.js"></script>
 </body>
 </html>
+

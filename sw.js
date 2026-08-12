@@ -1,8 +1,9 @@
-const CACHE_NAME = 'axarplus-cache-v1';
+const CACHE_NAME = 'axarplus-cache-v2';
 const PRECACHE_URLS = [
   './',
   './index.html',
   './gallery.html',
+  './Informacion.html',
   './faq.html',
   './contact.html',
   './styles.css',

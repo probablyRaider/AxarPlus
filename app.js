@@ -357,24 +357,24 @@ const aliasStopNames = {
 
 const frequencyLabels = {
   es: {
-    "L-V": "Lunes # ➜ Viernes",
-    sdf: "Sabado, domingo y festivos"
+    "L-V": "Lunes ➜ Viernes",
+    SDF: "Sábados, domingos y festivos"
   },
   en: {
     "L-V": "Mon # ➜ Fri",
-    sdf: "Saturday, Sunday & holidays"
+    SDF: "Saturday, Sunday & holidays"
   },
   pt: {
     "L-V": "Seg # ➜ Sex",
-    sdf: "Sábado, domingo e feriados"
+    SDF: "Sábado, domingo e feriados"
   },
   ca: {
-    "L-V": "Dll # ➜ Dv",
-    sdf: "Dissabte, diumenge i festius"
+    "L-V": "Dll ➜ Dv",
+    SDF: "Dissabte, diumenge i festius"
   },
   fr: {
     "L-V": "Lun # ➜ Ven",
-    sdf: "Samedi, dimanche et fêtes"
+    SDF: "Samedi, dimanche et fêtes"
   }
 };
 
@@ -411,14 +411,141 @@ const noteTranslations = {
 };
 
 function translateNoteText(note) {
+  if (currentLanguage === 'es') {
+    return note.replace('Urb. Alcaide', 'Urb. Alcalde');
+  }
   return (noteTranslations[currentLanguage] && noteTranslations[currentLanguage][note]) || note;
 }
 
 const displayLabels = {
   "Estación Bus Málaga": "Málaga (Estación Bus Málaga)",
   "Casabermeja (rotonda)": "Casabermeja",
+  "Urb. Alcaide": "Urb. Alcalde",
   "P.I. Virgen de la Candelaria": "P.I. Virgen de la Candelaria",
   "Rotonda Polígono el Campillo": "Rotonda Polígono El Campillo"
+};
+
+const informationTranslations = {
+  es: {
+    independenceTitle: "Proyecto independiente y no oficial",
+    independenceLead: "Axar+ es un proyecto personal, independiente y sin ánimo de lucro, realizado “por amor al arte” para facilitar la consulta de horarios y la planificación de viajes.",
+    independenceDetails: "Esta página no es una web oficial del Consorcio de Transporte Metropolitano del Área de Málaga. No está afiliada, asociada, patrocinada, gestionada, respaldada ni representa al Consorcio, a la Junta de Andalucía, a otra institución pública ni a ninguna empresa o entidad privada relacionada con el transporte.",
+    openSourceTitle: "Código abierto y autoría",
+    openSourceDescription: "Este proyecto se desarrolla como software de código abierto. Su código fuente puede consultarse y estudiarse públicamente; cualquier reutilización debe respetar la licencia aplicable y reconocer siempre la autoría original.",
+    authorLabel: "Autor:", repositoryLabel: "Repositorio:",
+    travelTitle: "¿Con qué puedo viajar?",
+    travelDescription: "Los horarios mostrados corresponden a los servicios indicados, pero los medios de pago y títulos aceptados dependen de las condiciones oficiales de cada servicio. Antes de viajar, consulta siempre la información vigente del operador y del Consorcio.",
+    transportCardTitle: "Tarjeta de Transporte Metropolitano de Andalucía",
+    transportCardDescription: "Es una tarjeta monedero sin contacto utilizada en los transportes públicos integrados en los Consorcios de Transporte Metropolitano de Andalucía, cuando el servicio correspondiente la admita.",
+    transportCardLink: "Información oficial de la Tarjeta de Transporte Metropolitano de Andalucía",
+    consortiumLink: "Consorcio de Transporte Metropolitano del Área de Málaga",
+    faresLink: "Tarifas y títulos vigentes del Consorcio de Málaga",
+    youngTitle: "Tarjeta Joven de Transporte",
+    youngDescription: "Existe una Tarjeta Joven de Transporte de Andalucía que puede ofrecer condiciones o bonificaciones específicas a las personas jóvenes que cumplan los requisitos oficiales. No todas las personas pueden utilizarla ni todos los servicios aplican necesariamente las mismas condiciones.",
+    youngConditions: "Los requisitos, la validez, las bonificaciones y los servicios incluidos pueden cambiar. Consulta siempre las páginas oficiales antes de solicitarla o utilizarla.",
+    youngAndalusiaLink: "Información oficial de la Tarjeta Joven de Transporte de Andalucía",
+    youngMalagaLink: "Tarjeta Joven del Consorcio de Transporte Metropolitano del Área de Málaga",
+    otherMethodsTitle: "Otros métodos de viaje",
+    otherMethodsDescription: "Según el servicio concreto, pueden existir otras modalidades vigentes, como el billete sencillo, tarjetas o títulos del Consorcio, la Tarjeta Joven de Transporte u otros títulos. Su disponibilidad, aceptación y condiciones no son iguales en todos los servicios; verifica siempre las condiciones oficiales antes de viajar.",
+    scheduleNoticeTitle: "Aviso sobre los horarios",
+    scheduleNoticeDescription: "Los horarios de Axar+ tienen finalidad exclusivamente informativa y esta página no es una fuente oficial de horarios. Comprueba la información oficial antes de realizar el viaje, especialmente ante cambios de horario, festivos, incidencias, modificaciones temporales o cambios en tarifas y títulos de transporte."
+  },
+  en: {
+    independenceTitle: "Independent, unofficial project",
+    independenceLead: "Axar+ is an independent, non-profit personal project created “for the love of it” to make timetable consultation and trip planning easier.",
+    independenceDetails: "This is not an official website of the Metropolitan Transport Consortium of the Málaga Area. It is not affiliated with, associated with, sponsored, managed, endorsed by or representative of the Consortium, the Regional Government of Andalusia, any other public institution, or any private company or organisation related to transport.",
+    openSourceTitle: "Open source and authorship",
+    openSourceDescription: "This project is developed as open-source software. Its source code can be publicly consulted and studied; any reuse must comply with the applicable licence and always acknowledge the original authorship.",
+    authorLabel: "Author:", repositoryLabel: "Repository:",
+    travelTitle: "How can I travel?",
+    travelDescription: "The displayed timetables refer to the indicated services, but accepted payment methods and tickets depend on each service's official conditions. Before travelling, always check the current information from the operator and the Consortium.",
+    transportCardTitle: "Andalusia Metropolitan Transport Card",
+    transportCardDescription: "It is a contactless stored-value card used on public transport integrated into Andalusia's Metropolitan Transport Consortia, when accepted by the relevant service.",
+    transportCardLink: "Official information on the Andalusia Metropolitan Transport Card",
+    consortiumLink: "Metropolitan Transport Consortium of the Málaga Area",
+    faresLink: "Current fares and tickets of the Málaga Consortium",
+    youngTitle: "Youth Transport Card",
+    youngDescription: "There is an Andalusia Youth Transport Card that may offer specific conditions or discounts to young people who meet the official requirements. Not everyone can use it, and not every service necessarily applies the same conditions.",
+    youngConditions: "Requirements, validity, discounts and included services may change. Always consult the official pages before applying for or using it.",
+    youngAndalusiaLink: "Official information on the Andalusia Youth Transport Card",
+    youngMalagaLink: "Youth Card of the Metropolitan Transport Consortium of the Málaga Area",
+    otherMethodsTitle: "Other travel methods",
+    otherMethodsDescription: "Depending on the specific service, other current options may exist, such as a single ticket, Consortium cards or tickets, the Youth Transport Card or other passes. Their availability, acceptance and conditions are not the same on every service; always check the official conditions before travelling.",
+    scheduleNoticeTitle: "Timetable notice",
+    scheduleNoticeDescription: "Axar+ timetables are for information purposes only, and this page is not an official timetable source. Check official information before travelling, especially for timetable changes, public holidays, incidents, temporary alterations, or changes to fares and tickets."
+  },
+  pt: {
+    independenceTitle: "Projeto independente e não oficial",
+    independenceLead: "Axar+ é um projeto pessoal, independente e sem fins lucrativos, realizado “por amor à arte” para facilitar a consulta de horários e o planeamento de viagens.",
+    independenceDetails: "Esta página não é um site oficial do Consórcio de Transporte Metropolitano da Área de Málaga. Não é afiliada, associada, patrocinada, gerida, apoiada nem representa o Consórcio, a Junta de Andaluzia, outra instituição pública ou qualquer empresa ou entidade privada relacionada com o transporte.",
+    openSourceTitle: "Código aberto e autoria",
+    openSourceDescription: "Este projeto é desenvolvido como software de código aberto. O seu código-fonte pode ser consultado e estudado publicamente; qualquer reutilização deve respeitar a licença aplicável e reconhecer sempre a autoria original.",
+    authorLabel: "Autor:", repositoryLabel: "Repositório:",
+    travelTitle: "Com que posso viajar?",
+    travelDescription: "Os horários apresentados correspondem aos serviços indicados, mas os meios de pagamento e títulos aceites dependem das condições oficiais de cada serviço. Antes de viajar, consulta sempre a informação atual do operador e do Consórcio.",
+    transportCardTitle: "Cartão de Transporte Metropolitano da Andaluzia",
+    transportCardDescription: "É um cartão sem contacto com saldo, utilizado nos transportes públicos integrados nos Consórcios de Transporte Metropolitano da Andaluzia, quando o serviço correspondente o aceitar.",
+    transportCardLink: "Informação oficial do Cartão de Transporte Metropolitano da Andaluzia",
+    consortiumLink: "Consórcio de Transporte Metropolitano da Área de Málaga",
+    faresLink: "Tarifas e títulos em vigor do Consórcio de Málaga",
+    youngTitle: "Cartão Jovem de Transporte",
+    youngDescription: "Existe um Cartão Jovem de Transporte da Andaluzia que pode oferecer condições ou descontos específicos a jovens que cumpram os requisitos oficiais. Nem todas as pessoas o podem utilizar, nem todos os serviços aplicam necessariamente as mesmas condições.",
+    youngConditions: "Os requisitos, a validade, os descontos e os serviços incluídos podem mudar. Consulta sempre as páginas oficiais antes de o pedir ou utilizar.",
+    youngAndalusiaLink: "Informação oficial do Cartão Jovem de Transporte da Andaluzia",
+    youngMalagaLink: "Cartão Jovem do Consórcio de Transporte Metropolitano da Área de Málaga",
+    otherMethodsTitle: "Outros métodos de viagem",
+    otherMethodsDescription: "Consoante o serviço concreto, podem existir outras modalidades em vigor, como bilhete simples, cartões ou títulos do Consórcio, o Cartão Jovem de Transporte ou outros títulos. A disponibilidade, aceitação e condições não são iguais em todos os serviços; verifica sempre as condições oficiais antes de viajar.",
+    scheduleNoticeTitle: "Aviso sobre os horários",
+    scheduleNoticeDescription: "Os horários da Axar+ têm uma finalidade exclusivamente informativa e esta página não é uma fonte oficial de horários. Confirma a informação oficial antes de viajar, especialmente perante alterações de horários, feriados, incidências, modificações temporárias ou alterações de tarifas e títulos de transporte."
+  },
+  ca: {
+    independenceTitle: "Projecte independent i no oficial",
+    independenceLead: "Axar+ és un projecte personal, independent i sense ànim de lucre, fet “per amor a l'art” per facilitar la consulta d'horaris i la planificació de viatges.",
+    independenceDetails: "Aquesta pàgina no és un web oficial del Consorci de Transport Metropolità de l'Àrea de Màlaga. No està afiliada, associada, patrocinada, gestionada, avalada ni representa el Consorci, la Junta d'Andalusia, cap altra institució pública ni cap empresa o entitat privada relacionada amb el transport.",
+    openSourceTitle: "Codi obert i autoria",
+    openSourceDescription: "Aquest projecte es desenvolupa com a programari de codi obert. El seu codi font es pot consultar i estudiar públicament; qualsevol reutilització ha de respectar la llicència aplicable i reconèixer sempre l'autoria original.",
+    authorLabel: "Autor:", repositoryLabel: "Repositori:",
+    travelTitle: "Amb què puc viatjar?",
+    travelDescription: "Els horaris mostrats corresponen als serveis indicats, però els mitjans de pagament i títols acceptats depenen de les condicions oficials de cada servei. Abans de viatjar, consulta sempre la informació vigent de l'operador i del Consorci.",
+    transportCardTitle: "Targeta de Transport Metropolità d'Andalusia",
+    transportCardDescription: "És una targeta moneder sense contacte utilitzada en els transports públics integrats als Consorcis de Transport Metropolità d'Andalusia, quan el servei corresponent l'admeti.",
+    transportCardLink: "Informació oficial de la Targeta de Transport Metropolità d'Andalusia",
+    consortiumLink: "Consorci de Transport Metropolità de l'Àrea de Màlaga",
+    faresLink: "Tarifes i títols vigents del Consorci de Màlaga",
+    youngTitle: "Targeta Jove de Transport",
+    youngDescription: "Hi ha una Targeta Jove de Transport d'Andalusia que pot oferir condicions o bonificacions específiques a les persones joves que compleixin els requisits oficials. No totes les persones la poden utilitzar ni tots els serveis apliquen necessàriament les mateixes condicions.",
+    youngConditions: "Els requisits, la validesa, les bonificacions i els serveis inclosos poden canviar. Consulta sempre les pàgines oficials abans de sol·licitar-la o utilitzar-la.",
+    youngAndalusiaLink: "Informació oficial de la Targeta Jove de Transport d'Andalusia",
+    youngMalagaLink: "Targeta Jove del Consorci de Transport Metropolità de l'Àrea de Màlaga",
+    otherMethodsTitle: "Altres mètodes de viatge",
+    otherMethodsDescription: "Segons el servei concret, poden existir altres modalitats vigents, com el bitllet senzill, targetes o títols del Consorci, la Targeta Jove de Transport o altres títols. La disponibilitat, acceptació i condicions no són iguals en tots els serveis; verifica sempre les condicions oficials abans de viatjar.",
+    scheduleNoticeTitle: "Avís sobre els horaris",
+    scheduleNoticeDescription: "Els horaris d'Axar+ tenen una finalitat exclusivament informativa i aquesta pàgina no és una font oficial d'horaris. Comprova la informació oficial abans de viatjar, especialment davant canvis d'horaris, festius, incidències, modificacions temporals o canvis en tarifes i títols de transport."
+  },
+  fr: {
+    independenceTitle: "Projet indépendant et non officiel",
+    independenceLead: "Axar+ est un projet personnel, indépendant et sans but lucratif, réalisé « par amour de l'art » afin de faciliter la consultation des horaires et la planification des trajets.",
+    independenceDetails: "Cette page n'est pas un site officiel du Consorcio de Transporte Metropolitano del Área de Málaga. Elle n'est ni affiliée, ni associée, ni sponsorisée, ni gérée, ni soutenue par le Consorcio, la Junta de Andalucía, une autre institution publique ou une entreprise ou entité privée liée aux transports, et ne les représente pas.",
+    openSourceTitle: "Code ouvert et paternité",
+    openSourceDescription: "Ce projet est développé comme logiciel open source. Son code source peut être consulté et étudié publiquement ; toute réutilisation doit respecter la licence applicable et toujours reconnaître la paternité originale.",
+    authorLabel: "Auteur :", repositoryLabel: "Dépôt :",
+    travelTitle: "Avec quoi puis-je voyager ?",
+    travelDescription: "Les horaires affichés correspondent aux services indiqués, mais les moyens de paiement et titres acceptés dépendent des conditions officielles de chaque service. Avant de voyager, consultez toujours les informations à jour de l'opérateur et du Consorcio.",
+    transportCardTitle: "Carte de transport métropolitain d'Andalousie",
+    transportCardDescription: "Il s'agit d'une carte sans contact à solde rechargeable utilisée dans les transports publics intégrés aux Consorcios de Transport Métropolitain d'Andalousie, lorsque le service concerné l'accepte.",
+    transportCardLink: "Informations officielles sur la Carte de transport métropolitain d'Andalousie",
+    consortiumLink: "Consorcio de Transporte Metropolitano del Área de Málaga",
+    faresLink: "Tarifs et titres en vigueur du Consorcio de Málaga",
+    youngTitle: "Carte Jeune de Transport",
+    youngDescription: "Il existe une Carte Jeune de Transport d'Andalousie qui peut offrir des conditions ou des réductions spécifiques aux jeunes remplissant les conditions officielles. Tout le monde ne peut pas l'utiliser et tous les services n'appliquent pas nécessairement les mêmes conditions.",
+    youngConditions: "Les conditions requises, la validité, les réductions et les services inclus peuvent changer. Consultez toujours les pages officielles avant de la demander ou de l'utiliser.",
+    youngAndalusiaLink: "Informations officielles sur la Carte Jeune de Transport d'Andalousie",
+    youngMalagaLink: "Carte Jeune du Consorcio de Transporte Metropolitano del Área de Málaga",
+    otherMethodsTitle: "Autres modes de voyage",
+    otherMethodsDescription: "Selon le service concerné, d'autres modalités en vigueur peuvent exister, comme le billet simple, des cartes ou titres du Consorcio, la Carte Jeune de Transport ou d'autres titres. Leur disponibilité, leur acceptation et leurs conditions ne sont pas les mêmes pour tous les services ; vérifiez toujours les conditions officielles avant de voyager.",
+    scheduleNoticeTitle: "Avertissement sur les horaires",
+    scheduleNoticeDescription: "Les horaires d'Axar+ sont fournis à titre informatif uniquement et cette page n'est pas une source officielle d'horaires. Vérifiez les informations officielles avant de voyager, notamment en cas de changements d'horaires, jours fériés, incidents, modifications temporaires ou changements de tarifs et de titres de transport."
+  }
 };
 
 const translations = {
@@ -439,8 +566,9 @@ const translations = {
     searchDescription: "Selecciona el origen y el destino para ver los horarios disponibles en ambas direcciones.",
     originLabel: "Origen",
     destinationLabel: "Destino",
-    searchButton: "Buscar horarios",
+    searchButton: "Buscar",
     resetButton: "Reiniciar",
+    dayFilterLabel: "Día de servicio",
     statusSelect: "Selecciona origen y destino para ver los horarios.",
     statusSame: "El origen y el destino deben ser diferentes.",
     statusNoDirect: "No se encontraron horarios directos de {origin} a {destination}. Prueba con otra dirección o selecciona una parada diferente.",
@@ -493,7 +621,7 @@ const translations = {
     searchDescription: "Select origin and destination to see available schedules.",
     originLabel: "Origin",
     destinationLabel: "Destination",
-    searchButton: "Search schedules",
+    searchButton: "Search",
     resetButton: "Reset",
     statusSelect: "Select origin and destination to view schedules.",
     statusSame: "Origin and destination must be different.",
@@ -547,7 +675,7 @@ const translations = {
     searchDescription: "Seleciona origem e destino para ver os horários disponíveis.",
     originLabel: "Origem",
     destinationLabel: "Destino",
-    searchButton: "Pesquisar horários",
+    searchButton: "Pesquisar",
     resetButton: "Reiniciar",
     statusSelect: "Seleciona origem e destino para ver os horários.",
     statusSame: "A origem e o destino devem ser diferentes.",
@@ -601,7 +729,7 @@ const translations = {
     searchDescription: "Selecciona origen i destinació per veure els horaris disponibles.",
     originLabel: "Origen",
     destinationLabel: "Destinació",
-    searchButton: "Cerca horaris",
+    searchButton: "Cerca",
     resetButton: "Reiniciar",
     statusSelect: "Selecciona origen i destinació per veure els horaris.",
     statusSame: "L'origen i la destinació han de ser diferents.",
@@ -655,7 +783,7 @@ const translations = {
     searchDescription: "Sélectionnez l'origine et la destination pour voir les horaires disponibles.",
     originLabel: "Origine",
     destinationLabel: "Destination",
-    searchButton: "Chercher horaires",
+    searchButton: "Chercher",
     resetButton: "Réinitialiser",
     statusSelect: "Sélectionnez origine et destination pour voir les horaires.",
     statusSame: "L'origine et la destination doivent être différentes.",
@@ -695,6 +823,7 @@ const translations = {
 };
 
 let currentLanguage = 'es';
+let selectedDayFilter = 'all';
 const LANGUAGE_STORAGE_KEY = 'axar-language';
 const SPLASH_STORAGE_KEY = 'axar-splash-seen';
 
@@ -742,6 +871,14 @@ function applyTranslations() {
       } else {
         node.textContent = t(key);
       }
+    }
+  });
+
+  document.querySelectorAll('[data-info-i18n]').forEach(node => {
+    const key = node.getAttribute('data-info-i18n');
+    const message = informationTranslations[currentLanguage]?.[key] || informationTranslations.es[key];
+    if (message) {
+      node.textContent = message;
     }
   });
 
@@ -862,8 +999,14 @@ function getJourneyList(origin, destination) {
     const startIndex = section.stops.indexOf(normalizedOrigin);
     const endIndex = section.stops.indexOf(normalizedDestination);
 
-    if (startIndex >= 0 && endIndex >= 0 && startIndex !== endIndex) {
+    // A journey is valid only in the physical direction of this service.
+    // This prevents mixing IDA and VUELTA services.
+    if (startIndex >= 0 && endIndex > startIndex) {
       section.journeys.forEach(journey => {
+        const frequency = journey.frequency.toUpperCase();
+        if (selectedDayFilter !== 'all' && frequency !== selectedDayFilter) {
+          return;
+        }
         const departure = journey.stops[normalizedOrigin];
         const arrival = journey.stops[normalizedDestination];
 
@@ -872,7 +1015,7 @@ function getJourneyList(origin, destination) {
             direction: section.direction,
             departure,
             arrival,
-            frequency: frequencyLabels[currentLanguage][journey.frequency] || journey.frequency || 'Diario',
+            frequency: frequencyLabels[currentLanguage][frequency] || frequency,
             note: journey.note.trim(),
             origin: normalizedOrigin,
             destination: normalizedDestination
@@ -963,8 +1106,7 @@ function renderResults(origin, destination, journeys) {
       notePill.textContent = translateNoteText(journey.note.trim());
       noteCell.appendChild(notePill);
     } else {
-      noteCell.textContent = '—';
-      noteCell.style.color = 'rgba(248, 248, 248, 0.75)';
+      noteCell.textContent = '';
     }
     row.appendChild(noteCell);
 
@@ -1024,11 +1166,21 @@ function handleSearch() {
 
 function handleReset() {
   populateStops();
+  setDayFilter('all');
   const results = document.getElementById('results');
   if (results) {
     results.innerHTML = '';
   }
   renderStatus(t('statusSelect'));
+}
+
+function setDayFilter(filter) {
+  selectedDayFilter = filter;
+  document.querySelectorAll('[data-day-filter]').forEach(button => {
+    const isActive = button.dataset.dayFilter === filter;
+    button.classList.toggle('active', isActive);
+    button.setAttribute('aria-pressed', String(isActive));
+  });
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -1106,6 +1258,13 @@ window.addEventListener('DOMContentLoaded', () => {
   const origin = document.getElementById('origin');
   const destination = document.getElementById('destination');
   const langToggle = document.getElementById('langToggle');
+
+  document.querySelectorAll('[data-day-filter]').forEach(button => {
+    button.addEventListener('click', () => {
+      setDayFilter(button.dataset.dayFilter);
+      handleSearch();
+    });
+  });
 
   if (searchButton) {
     searchButton.addEventListener('click', handleSearch);

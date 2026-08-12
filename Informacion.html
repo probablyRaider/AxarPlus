@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Axar+" />
+  <link rel="apple-touch-icon" sizes="180x180" href="logoapp.png" />
+  <link rel="manifest" href="manifest.json" />
+  <title>Axar+ | Información</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="loading">
+  <div id="splash-screen" class="splash-screen" aria-live="polite" aria-label="Cargando Axar+">
+    <img src="./logo2.png" alt="Axar+ logo" />
+  </div>
+
+  <header class="hero">
+    <div class="hero-top">
+      <div class="brand-mark">
+        <div class="brand-stack">
+          <a href="index.html" aria-label="Ir a la portada">
+            <img class="brand-logo" src="./logo2.png" alt="Axar+ logo" loading="eager" />
+          </a>
+          <p class="brand-slogan" data-i18n="heroSubtitle">Busca horarios actualizados y planifica tu viaje con una <strong>web clara</strong>, <strong>rápida</strong> y <strong>fácil</strong>.</p>
+        </div>
+      </div>
+      <div class="hero-controls">
+        <div class="language-picker">
+          <button id="langToggle" class="lang-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu" data-i18n="languageLabel">🌍 Español</button>
+          <div class="language-menu" id="langMenu" aria-label="Idioma" hidden>
+            <button type="button" class="lang-btn active" data-lang="es">🇪🇸 Español</button>
+            <button type="button" class="lang-btn" data-lang="en">🇬🇧 English</button>
+            <button type="button" class="lang-btn" data-lang="pt">🇵🇹 Português</button>
+            <button type="button" class="lang-btn" data-lang="ca">🇪🇸 Català</button>
+            <button type="button" class="lang-btn" data-lang="fr">🇫🇷 Français</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="hero-links" aria-label="Navegación principal">
+      <a href="index.html" data-i18n="navHome">Inicio</a>
+      <a href="gallery.html" data-i18n="navGallery">Galería</a>
+      <a href="Informacion.html" data-i18n="navInfo" aria-current="page">Información</a>
+      <a href="faq.html" data-i18n="navFaq">FAQ</a>
+      <a href="contact.html" data-i18n="navContact">Contacto</a>
+    </nav>
+  </header>
+
+  <main class="container info-page">
+    <section class="info-card info-topic" aria-labelledby="independence-title">
+        <h3 id="independence-title" data-info-i18n="independenceTitle">Proyecto independiente y no oficial</h3>
+        <p data-info-i18n="independenceLead">Axar+ es un proyecto personal, independiente y sin ánimo de lucro, realizado “por amor al arte” para facilitar la consulta de horarios y la planificación de viajes.</p>
+        <p data-info-i18n="independenceDetails">Esta página no es una web oficial del Consorcio de Transporte Metropolitano del Área de Málaga. No está afiliada, asociada, patrocinada, gestionada, respaldada ni representa al Consorcio, a la Junta de Andalucía, a otra institución pública ni a ninguna empresa o entidad privada relacionada con el transporte.</p>
+    </section>
+
+    <section class="info-card info-topic" aria-labelledby="open-source-title">
+        <h3 id="open-source-title" data-info-i18n="openSourceTitle">Código abierto y autoría</h3>
+        <p data-info-i18n="openSourceDescription">Este proyecto se desarrolla como software de código abierto. Su código fuente puede consultarse y estudiarse públicamente; cualquier reutilización debe respetar la licencia aplicable y reconocer siempre la autoría original.</p>
+        <p><strong data-info-i18n="authorLabel">Autor:</strong> <a href="https://github.com/probablyraider" target="_blank" rel="noopener noreferrer">@probablyraider</a></p>
+        <p><strong data-info-i18n="repositoryLabel">Repositorio:</strong> <a href="https://github.com/probablyRaider/AxarPlus" target="_blank" rel="noopener noreferrer">github.com/probablyRaider/AxarPlus</a></p>
+    </section>
+
+    <section class="info-card info-topic" aria-labelledby="travel-title">
+        <h3 id="travel-title" data-info-i18n="travelTitle">¿Con qué puedo viajar?</h3>
+        <p data-info-i18n="travelDescription">Los horarios mostrados corresponden a los servicios indicados, pero los medios de pago y títulos aceptados dependen de las condiciones oficiales de cada servicio. Antes de viajar, consulta siempre la información vigente del operador y del Consorcio.</p>
+        <h4 data-info-i18n="transportCardTitle">Tarjeta de Transporte Metropolitano de Andalucía</h4>
+        <p data-info-i18n="transportCardDescription">Es una tarjeta monedero sin contacto utilizada en los transportes públicos integrados en los Consorcios de Transporte Metropolitano de Andalucía, cuando el servicio correspondiente la admita.</p>
+        <ul class="official-links">
+          <li><a href="https://www.juntadeandalucia.es/temas/transporte/publico/metropolitano.html" target="_blank" rel="noopener noreferrer" data-info-i18n="transportCardLink">Información oficial de la Tarjeta de Transporte Metropolitano de Andalucía</a></li>
+          <li><a href="https://ctmam.es/" target="_blank" rel="noopener noreferrer" data-info-i18n="consortiumLink">Consorcio de Transporte Metropolitano del Área de Málaga</a></li>
+          <li><a href="https://ctmam.es/tarifas/" target="_blank" rel="noopener noreferrer" data-info-i18n="faresLink">Tarifas y títulos vigentes del Consorcio de Málaga</a></li>
+        </ul>
+    </section>
+
+    <section class="info-card info-topic" aria-labelledby="young-card-title">
+        <h3 id="young-card-title" data-info-i18n="youngTitle">Tarjeta Joven de Transporte</h3>
+        <p data-info-i18n="youngDescription">Existe una Tarjeta Joven de Transporte de Andalucía que puede ofrecer condiciones o bonificaciones específicas a las personas jóvenes que cumplan los requisitos oficiales. No todas las personas pueden utilizarla ni todos los servicios aplican necesariamente las mismas condiciones.</p>
+        <p data-info-i18n="youngConditions">Los requisitos, la validez, las bonificaciones y los servicios incluidos pueden cambiar. Consulta siempre las páginas oficiales antes de solicitarla o utilizarla.</p>
+        <ul class="official-links">
+          <li><a href="https://www.juntadeandalucia.es/temas/transporte/publico/metropolitano.html" target="_blank" rel="noopener noreferrer" data-info-i18n="youngAndalusiaLink">Información oficial de la Tarjeta Joven de Transporte de Andalucía</a></li>
+          <li><a href="https://ctmam.es/titulos-de-transporte/tarjeta-joven/" target="_blank" rel="noopener noreferrer" data-info-i18n="youngMalagaLink">Tarjeta Joven del Consorcio de Transporte Metropolitano del Área de Málaga</a></li>
+        </ul>
+    </section>
+
+    <section class="info-card info-topic" aria-labelledby="other-methods-title">
+        <h3 id="other-methods-title" data-info-i18n="otherMethodsTitle">Otros métodos de viaje</h3>
+        <p data-info-i18n="otherMethodsDescription">Según el servicio concreto, pueden existir otras modalidades vigentes, como el billete sencillo, tarjetas o títulos del Consorcio, la Tarjeta Joven de Transporte u otros títulos. Su disponibilidad, aceptación y condiciones no son iguales en todos los servicios; verifica siempre las condiciones oficiales antes de viajar.</p>
+    </section>
+
+    <section class="info-card info-topic notice-section" aria-labelledby="schedule-notice-title">
+        <h3 id="schedule-notice-title" data-info-i18n="scheduleNoticeTitle">Aviso sobre los horarios</h3>
+        <p data-info-i18n="scheduleNoticeDescription">Los horarios de Axar+ tienen finalidad exclusivamente informativa y esta página no es una fuente oficial de horarios. Comprueba la información oficial antes de realizar el viaje, especialmente ante cambios de horario, festivos, incidencias, modificaciones temporales o cambios en tarifas y títulos de transporte.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p data-i18n="footerCredit">Axar+ creado por <a href="https://github.com/probablyraider" target="_blank" rel="noopener noreferrer">@probablyraider</a> en <a href="https://github.com/probablyraider" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
