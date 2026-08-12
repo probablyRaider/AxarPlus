@@ -881,6 +881,20 @@ button#swapButton {
     padding: 1.25rem;
   }
 
+  .hero-top {
+    flex-direction: column;
+    gap: 0.85rem;
+    padding-top: calc(1rem + env(safe-area-inset-top));
+    padding-bottom: 1rem;
+  }
+
+  .hero-controls {
+    position: static;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.25rem;
+  }
+
   .lang-toggle {
     padding: 0.7rem 0.8rem;
     border-radius: 12px;
@@ -889,6 +903,9 @@ button#swapButton {
 
   .language-menu {
     min-width: 180px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
   }
 
   .hero-links {

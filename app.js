@@ -550,7 +550,7 @@ const informationTranslations = {
 
 const translations = {
   es: {
-    pageTitle: "Axar+ | Planifica tu viaje",
+    pageTitle: "Axar+",
     brandLabel: "Axar+",
     heroTitle: "Axar+ · Planifica tus viajes con claridad",
     heroSubtitle: "Busca horarios actualizados y planifica tu viaje con una <strong>web clara</strong>, <strong>rápida</strong> y <strong>fácil</strong>.",
@@ -605,7 +605,7 @@ const translations = {
     contactGitHubLabel: "GitHub"
   },
   en: {
-    pageTitle: "Axar+ | Plan your journey",
+    pageTitle: "Axar+",
     brandLabel: "Axar+",
     heroTitle: "Axar+ · Plan your journeys with clarity",
     heroSubtitle: "Search updated schedules and plan your route with a <strong>clear</strong>, <strong>fast</strong> and <strong>easy</strong> web experience.",
@@ -660,7 +660,7 @@ const translations = {
     contactGitHubLabel: "GitHub"
   },
   pt: {
-    pageTitle: "Axar+ | Planeia a tua viagem",
+    pageTitle: "Axar+",
     brandLabel: "Axar+",
     heroTitle: "Axar+ · Planeia as tuas viagens com clareza",
     heroSubtitle: "Procura horários atualizados e planeia o teu percurso com uma experiência de <strong>web clara</strong>, <strong>rápida</strong> e <strong>fácil</strong>.",
@@ -715,7 +715,7 @@ const translations = {
     contactGitHubLabel: "GitHub"
   },
   ca: {
-    pageTitle: "Axar+ | Planifica el teu viatge",
+    pageTitle: "Axar+",
     brandLabel: "Axar+",
     heroTitle: "Axar+ · Planifica els teus viatges amb claredat",
     heroSubtitle: "Cerca horaris actualitzats i planifica el teu recorregut amb una <strong>web clara</strong>, <strong>ràpida</strong> i <strong>fàcil</strong>.",
@@ -770,7 +770,7 @@ const translations = {
     contactGitHubLabel: "GitHub"
   },
   fr: {
-    pageTitle: "Axar+ | Planifiez votre voyage",
+    pageTitle: "Axar+",
     brandLabel: "Axar+",
     heroTitle: "Axar+ · Planifiez vos trajets avec clarté",
     heroSubtitle: "Recherchez des horaires à jour et planifiez votre parcours avec une expérience <strong>claire</strong>, <strong>rapide</strong> et <strong>simple</strong>.",
