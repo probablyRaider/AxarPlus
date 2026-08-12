@@ -546,6 +546,7 @@ button#swapButton {
   margin: 1rem 0 0;
   padding: 0;
   border: 0;
+  min-inline-size: 0;
 }
 
 .day-filter legend {
@@ -568,6 +569,27 @@ button#swapButton {
 .day-filter-button[aria-pressed="true"] {
   background: #f8fafc;
   color: #111218;
+}
+
+@media (max-width: 420px) {
+  .day-filter {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    max-width: 22rem;
+    margin-inline: auto;
+    gap: 0.45rem;
+  }
+
+  .day-filter legend {
+    grid-column: 1 / -1;
+  }
+
+  .day-filter-button {
+    min-width: 0;
+    width: 100%;
+    padding-inline: 0.35rem;
+  }
 }
 
 .status-message {
