@@ -2,7 +2,7 @@
 
 **Axar+** es una plataforma aún en desarrollo en base a la idea de hacer una página que funcione... No como la página del Consorcio de Transportes de Andalucía. De momento, solo conecta la línea M-251.
 
-> **Nota:** Este proyecto **no es un sitio web oficial** de ninguna entidad pública. Está hecho 100% por amor al arte y por ganas de ofrecer una mejor experiencia a los usuarios de la comarca.
+> **Nota:** Este proyecto **no es oficial** de ninguna entidad pública / privada. Está hecho 100% por amor al arte y por ganas de ofrecer una mejor experiencia a los usuarios de la comarca.
 
 🌐 **Sitio Web:** [Axar+](https://probablyraider.github.io/AxarPlus/)  
 
